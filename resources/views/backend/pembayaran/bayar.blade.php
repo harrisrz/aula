@@ -26,6 +26,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">ID Pemesanan</th>
                 <th scope="col">Tanggal Pembayaran</th>
+                <th scope="col">Status Konfirmasi</th>
                 <th scope="col">Keterangan</th>
                 <th scope="col">Action</th>
             </tr>
@@ -37,10 +38,19 @@
                 <td>{{ $b->id_pemesanan }}</td>
                 <td>{{ $b->tanggal_pembayaran }}</td>
                 <td> 
+                    @if ($b->status_konfirmasi == 'menunggu')
+                        <span class="badge bg-warning">Menunggu</span>
+                    @elseif ($b->status_konfirmasi == 'disetujui')
+                        <span class="badge bg-success">Disetujui</span>
+                    @else
+                        <span class="badge bg-danger">Ditolak</span>
+                    @endif
+                </td>
+                <td> 
                     @if ($b->keterangan == 'cicilan')
                         <span class="badge bg-warning">Cicilan</span>
                     @elseif ($b->keterangan == 'lunas')
-                        <span class="badge bg-success">lunas</span>
+                        <span class="badge bg-success">Lunas</span>
                     @endif
                 </td>
                 <td>
@@ -98,19 +108,36 @@
                                                     : {{ $b->pembayaran_ke }}
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                @if($b->bukti_pembayaran)
+                                                <div class="col-md-4">
+                                                    <p><strong>Bukti Pembayaran</strong></p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <img src="{{ asset('storage/' . $b->bukti_pembayaran) }}" alt="Bukti Pembayaran" class="img-thumbnail" style="width: 150px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImageModal('{{ asset('storage/' . $b->bukti_pembayaran) }}')">
+                                                </div>
+                                                @else
+                                                <div class="col-md-4">
+                                                    <p><strong>Bukti Pembayaran</strong></p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p>: Tidak ada bukti pembayaran.</p>
+                                                </div>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer d-flex justify-content-between">
                                     <div>
-                                        <form action="#" method="POST">
+                                        <form action="{{ route('admin.backend.pembayaran.update-status', ['id' => $b->id]) }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="status_konfirmasi" value="disetujui">
                                             <button type="submit" class="btn btn-success">Konfirmasi</button>
                                         </form>
                                     </div>
                                     <div class="col text-start">
-                                        <form action="#" method="POST">
+                                        <form action="{{ route('admin.backend.pembayaran.update-status', ['id' => $b->id]) }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="status_konfirmasi" value="ditolak">
                                             <button type="submit" class="btn btn-danger">Tolak</button>
@@ -157,4 +184,24 @@
     </div>
 </div>
 
+<!-- Modal for displaying full-size image -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">Bukti Pembayaran</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img id="modalImage" src="" alt="Bukti Pembayaran" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showImageModal(src) {
+        document.getElementById('modalImage').src = src;
+    }
+</script>
 @endsection

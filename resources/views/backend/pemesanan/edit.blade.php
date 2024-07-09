@@ -23,31 +23,55 @@
   <div class="row mb-3">
     <label for="nama" class="col-sm-3 col-form-label">Nama</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" name="nama" value= "{{ $pesan->nama }}">
+      <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value= "{{ $pesan->nama }}">
+      @error('nama')
+          <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
     </div>
   </div>
   <div class="row mb-3">
     <label for="unit_atau_instansi" class="col-sm-3 col-form-label">Unit Atau Instansi</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" name="unit_atau_instansi" value= "{{ $pesan->unit_atau_instansi }}">
+      <input type="text" class="form-control @error('unit_atau_instansi') is-invalid @enderror" id="unit_atau_instansi" name="unit_atau_instansi" value= "{{ $pesan->unit_atau_instansi }}">
+      @error('unit_atau_instansi')
+          <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
     </div>
   </div>
   <div class="row mb-3">
     <label for="nama_kegiatan" class="col-sm-3 col-form-label">Nama Kegiatan</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" name="nama_kegiatan" value= "{{ $pesan->nama_kegiatan }}">
+      <input type="text" class="form-control @error('nama_kegiatan') is-invalid @enderror" id="nama_kegiatan" name="nama_kegiatan" value= "{{ $pesan->nama_kegiatan }}">
+      @error('nama_kegiatan')
+          <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
     </div>
   </div>
   <div class="row mb-3">
-    <label for="tanggal_pemakaian" class="col-sm-3 col-form-label">Tanggal Pemakaian</label>
+    <label for="tanggal_mulai" class="col-sm-3 col-form-label">Tanggal Mulai</label>
     <div class="col-sm-4">
-      <input type="datetime-local" class="form-control" name="tanggal_pemakaian" value= "{{ $pesan->tanggal_pemakaian }}">
+      <input type="datetime-local" class="form-control @error('tanggal_mulai') is-invalid @enderror" id="tanggal_mulai" name="tanggal_mulai" value= "{{ $pesan->tanggal_mulai }}">
+      @error('tanggal_mulai')
+          <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label for="tanggal_selesai" class="col-sm-3 col-form-label">Tanggal Selesai</label>
+    <div class="col-sm-4">
+      <input type="datetime-local" class="form-control @error('tanggal_selesai') is-invalid @enderror" id="tanggal_selesai" name="tanggal_selesai" value= "{{ $pesan->tanggal_selesai }}">
+      @error('tanggal_selesai')
+          <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
     </div>
   </div>
   <div class="row mb-3">
     <label for="jumlah_peserta" class="col-sm-3 col-form-label">Jumlah Peserta</label>
     <div class="col-sm-9">
-      <input type="number" class="form-control" name="jumlah_peserta" value= "{{ $pesan->jumlah_peserta }}">
+      <input type="text" class="form-control @error('jumlah_peserta') is-invalid @enderror" id="jumlah_peserta" name="jumlah_peserta" value= "{{ $pesan->jumlah_peserta }}">
+      @error('jumlah_peserta')
+          <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
     </div>
   </div>
   <fieldset class="row mb-3">

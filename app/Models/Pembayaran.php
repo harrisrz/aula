@@ -17,7 +17,9 @@ class Pembayaran extends Model
         'metode_pembayaran',
         'nominal_biaya',
         'pembayaran_ke',
+        'status_konfirmasi',
         'keterangan',
+        'bukti_pembayaran',
     ];
 
     public function pemesanan()

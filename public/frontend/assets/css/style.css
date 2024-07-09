@@ -16,7 +16,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #d9232d;
+  color: #006400;
 }
 
 a:hover {
@@ -43,7 +43,7 @@ h6 {
   right: 15px;
   bottom: 15px;
   z-index: 996;
-  background: #d9232d;
+  background: #006400;
   width: 40px;
   height: 40px;
   border-radius: 4px;
@@ -57,7 +57,7 @@ h6 {
 }
 
 .back-to-top:hover {
-  background: #e1444d;
+  background: #006400;
   color: #fff;
 }
 
@@ -102,6 +102,7 @@ h6 {
 #header .logo img {
   max-height: 40px;
 }
+
 
 /*--------------------------------------------------------------
 # Navigation Menu
@@ -166,7 +167,7 @@ h6 {
 .navbar .getstarted:hover,
 .navbar .getstarted:focus:hover {
   color: #fff;
-  background: #e1444d;
+  background: #006400;
 }
 
 .navbar .dropdown ul {
@@ -488,7 +489,7 @@ h6 {
 }
 
 #hero .btn-get-started:hover {
-  background: #df3740;
+  background: #006400;
 }
 
 @media (max-width: 992px) {
@@ -632,7 +633,7 @@ section {
 --------------------------------------------------------------*/
 .about .content h2 {
   font-weight: 700;
-  font-size: 48px;
+  font-size: 32px;
   line-height: 60px;
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -1348,12 +1349,18 @@ section {
 }
 
 .contact .info .email,
+.contact .info .facebook,
+.contact .info .youtube,
 .contact .info .phone {
   margin-top: 40px;
 }
 
 .contact .info .email:hover i,
 .contact .info .address:hover i,
+.contact .info .instagram:hover i,
+.contact .info .facebook:hover i,
+.contact .info .youtube:hover i,
+.contact .info .twitter:hover i,
 .contact .info .phone:hover i {
   background: #556270;
   color: #fff;
@@ -1965,7 +1972,7 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: #4a5562;
+  background: #006400;
   padding: 0 0 30px 0;
   color: #fff;
   font-size: 14px;

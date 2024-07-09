@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('nama');
             $table->string('unit_atau_instansi');
             $table->string('nama_kegiatan');
-            $table->datetime('tanggal_pemakaian');
+            $table->datetime('tanggal_mulai');
+            $table->datetime('tanggal_selesai');
             $table->integer('jumlah_peserta');
             $table->enum('jenis_pemesanan', ['penyewaan', 'peminjaman']);
             $table->decimal('total_biaya', 10, 2)->default(0.00);

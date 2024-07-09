@@ -23,6 +23,26 @@ class PemesananController extends Controller
     public function store(Request $request)
     {
 
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'unit_atau_instansi' => 'required|string|max:255',
+            'nama_kegiatan' => 'required|string|max:255',
+            'tanggal_mulai' => 'required|date|after_or_equal:today',
+            'tanggal_selesai' => 'required|date|after_or_equal:tanggal_mulai',
+            'jumlah_peserta' => 'required|integer|min:1',
+            'jenis_pemesanan' => 'required|string|in:penyewaan,peminjaman',
+            'keterangan' => 'nullable|string',
+        ], [
+            'nama.required' => 'Nama harus diisi.',
+            'unit_atau_instansi.required' => 'Unit atau instansi harus diisi.',
+            'nama_kegiatan.required' => 'Nama kegiatan harus diisi.',
+            'tanggal_mulai.required' => 'Tanggal mulai harus diisi.',
+            'tanggal_selesai.required' => 'Tanggal selesai harus diisi.',
+            'jumlah_peserta.required' => 'Jumlah peserta harus diisi.',
+            'jumlah_peserta.integer' => 'Jumlah peserta harus berupa angka.',
+            'jumlah_peserta.min' => 'Jumlah peserta harus minimal 1.',
+        ]);
+    
         $user = Auth::user();
 
          // Tentukan biaya kebersihan
@@ -37,7 +57,8 @@ class PemesananController extends Controller
         $pesan['nama']                = $request->nama;
         $pesan['unit_atau_instansi']  = $request->unit_atau_instansi;
         $pesan['nama_kegiatan']       = $request->nama_kegiatan;
-        $pesan['tanggal_pemakaian']   = $request->tanggal_pemakaian;
+        $pesan['tanggal_mulai']       = $request->tanggal_mulai;
+        $pesan['tanggal_selesai']     = $request->tanggal_selesai;
         $pesan['jumlah_peserta']      = $request->jumlah_peserta;
         $pesan['jenis_pemesanan']     = $request->jenis_pemesanan;
         $pesan['total_biaya']         = $total_biaya;
@@ -59,6 +80,26 @@ class PemesananController extends Controller
 
     public function update(Request $request, $id){
 
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'unit_atau_instansi' => 'required|string|max:255',
+            'nama_kegiatan' => 'required|string|max:255',
+            'tanggal_mulai' => 'required|date|after_or_equal:today',
+            'tanggal_selesai' => 'required|date|after_or_equal:tanggal_mulai',
+            'jumlah_peserta' => 'required|integer|min:1',
+            'jenis_pemesanan' => 'required|string|in:penyewaan,peminjaman',
+            'keterangan' => 'nullable|string',
+        ], [
+            'nama.required' => 'Nama harus diisi.',
+            'unit_atau_instansi.required' => 'Unit atau instansi harus diisi.',
+            'nama_kegiatan.required' => 'Nama kegiatan harus diisi.',
+            'tanggal_mulai.required' => 'Tanggal mulai harus diisi.',
+            'tanggal_selesai.required' => 'Tanggal selesai harus diisi.',
+            'jumlah_peserta.required' => 'Jumlah peserta harus diisi.',
+            'jumlah_peserta.integer' => 'Jumlah peserta harus berupa angka.',
+            'jumlah_peserta.min' => 'Jumlah peserta harus minimal 1.',
+        ]);
+
         $user = Auth::user();
 
          // Tentukan biaya kebersihan
@@ -73,7 +114,8 @@ class PemesananController extends Controller
         $pesan['nama']                = $request->nama;
         $pesan['unit_atau_instansi']  = $request->unit_atau_instansi;
         $pesan['nama_kegiatan']       = $request->nama_kegiatan;
-        $pesan['tanggal_pemakaian']   = $request->tanggal_pemakaian;
+        $pesan['tanggal_mulai']       = $request->tanggal_mulai;
+        $pesan['tanggal_selesai']     = $request->tanggal_selesai;
         $pesan['jumlah_peserta']      = $request->jumlah_peserta;
         $pesan['jenis_pemesanan']     = $request->jenis_pemesanan;
         $pesan['total_biaya']         = $total_biaya;

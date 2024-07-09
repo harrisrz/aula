@@ -10,4 +10,15 @@ class HomeController extends Controller
     {
         return view('frontend.home');
     }
+
+    public function kontak()
+    {
+        return view('frontend.kontak');
+    }
+
+    public function tentang()
+    {
+        return view('frontend.tentang');
+    }
+
 }

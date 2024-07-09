@@ -17,7 +17,7 @@
     <h5 class="card-title">
       Edit Data Pembayaran
   </h5>
-<form action="{{ route('admin.backend.pembayaran.update', ['id' => $bayar->id])}}" method="POST">
+<form action="{{ route('admin.backend.pembayaran.update', ['id' => $bayar->id])}}" method="POST" enctype="multipart/form-data">
   @csrf
   @method('PUT')
   <div class="row mb-3">
@@ -29,7 +29,10 @@
   <div class="row mb-3">
     <label for="tanggal_pembayaran" class="col-sm-3 col-form-label">Tanggal Pembayaran</label>
     <div class="col-sm-9">
-      <input type="datetime-local" class="form-control" name="tanggal_pembayaran">
+      <input type="datetime-local" class="form-control @error('tanggal_pembayaran') is-invalid @enderror" id="tanggal_pembayaran" name="tanggal_pembayaran" value="{{ $bayar->tanggal_pembayaran }}">
+      @error('tanggal_pembayaran')
+          <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
     </div>
   </div>
   <fieldset class="row mb-3">
@@ -51,13 +54,19 @@
   <div class="row mb-3">
     <label for="nominal_biaya" class="col-sm-3 col-form-label">Nominal Biaya</label>
     <div class="col-sm-9">
-      <input type="number" class="form-control" name="nominal_biaya" value= "{{ $bayar->nominal_biaya }}">
+      <input type="number" class="form-control @error('nominal_biaya') is-invalid @enderror" id="nominal_biaya" name="nominal_biaya" value="{{ $bayar->nominal_biaya }}">
+      @error('nominal_biaya')
+          <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
     </div>
   </div>
   <div class="row mb-3">
     <label for="pembayaran_ke" class="col-sm-3 col-form-label">Pembayaran Ke-</label>
     <div class="col-sm-9">
-      <input type="number" class="form-control" name="pembayaran_ke" value= "{{ $bayar->pembayaran_ke }}">
+      <input type="number" class="form-control @error('pembayaran_ke') is-invalid @enderror" id="pembayaran_ke" name="pembayaran_ke" value="{{ $bayar->pembayaran_ke }}">
+      @error('pembayaran_ke')
+          <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
     </div>
   </div>
   <div class="row mb-3">
@@ -67,6 +76,15 @@
         <option selected value="lunas">Lunas</option>
         <option value="cicilan">Cicilan</option>
       </select>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label for="bukti_pembayaran" class="col-sm-3 col-form-label">Bukti Pembayaran</label>
+    <div class="col-sm-4">
+      <input type="file" class="form-control @error('bukti_pembayaran') is-invalid @enderror" id="bukti_pembayaran" name="bukti_pembayaran" value="{{ $bayar->bukti_pembayaran }}">
+      @error('bukti_pembayaran')
+          <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
     </div>
   </div>
   <div class="row mb-3">

@@ -18,7 +18,9 @@ return new class extends Migration
             $table->enum('metode_pembayaran', ['cash', 'transfer']);
             $table->decimal('nominal_biaya', 10, 2)->default(0.00);
             $table->integer('pembayaran_ke');
+            $table->enum('status_konfirmasi', ['menunggu', 'disetujui', 'ditolak'])->default('menunggu');
             $table->enum('keterangan', ['lunas', 'cicilan']);
+            $table->string('bukti_pembayaran')->nullable();
             $table->timestamps();
         });
     }

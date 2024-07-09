@@ -15,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 
 // route frontend
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('frontend.home');
+Route::get('/tentang', [\App\Http\Controllers\HomeController::class, 'tentang'])->name('frontend.tentang');
+Route::get('/kontak', [\App\Http\Controllers\HomeController::class, 'kontak'])->name('frontend.kontak');
+Route::get('/jadwal', [\App\Http\Controllers\JadwalController::class, 'index'])->name('frontend.jadwal');
+Route::get('/list', [\App\Http\Controllers\JadwalController::class, 'list'])->name('frontend.list');
+Route::get('/form-pesanan', [\App\Http\Controllers\JadwalController::class, 'create'])->name('frontend.form-pesanan');
+Route::get('/form-bayar', [\App\Http\Controllers\JadwalController::class, 'formBayar'])->name('frontend.form-bayar');
+Route::get('/jadwal/pesanan-by-date', [\App\Http\Controllers\JadwalController::class, 'getPesananByDate'])->name('frontend.pesanan-by-date');
+Route::post('/buat-pesanan', [\App\Http\Controllers\JadwalController::class, 'store'])->name('frontend.buat-pesanan');
+Route::post('/bayar', [\App\Http\Controllers\JadwalController::class, 'bayar'])->name('frontend.bayar');
 
 // route auth
 Route::get('/login', [\App\Http\Controllers\LoginController::class, 'index'])->name('login');
@@ -51,5 +60,6 @@ Route::get('/admin', [\App\Http\Controllers\Admin\DashboardController::class, 'i
     Route::get('/pembayaran/edit/{id}', [\App\Http\Controllers\PembayaranController::class, 'edit'])->name('backend.pembayaran.edit');
     Route::put('/pembayaran/update/{id}', [\App\Http\Controllers\PembayaranController::class, 'update'])->name('backend.pembayaran.update');
     Route::delete('/pembayaran/delete/{id}', [\App\Http\Controllers\PembayaranController::class, 'delete'])->name('backend.pembayaran.delete');
+    Route::post('/pembayaran/update-status/{id}', [\App\Http\Controllers\PembayaranController::class, 'updateStatus'])->name('backend.pembayaran.update-status');
 });
 

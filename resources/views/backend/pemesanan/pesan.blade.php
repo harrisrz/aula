@@ -30,7 +30,6 @@
                 <th scope="col">ID</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Nama Kegiatan</th>
-                <th scope="col">Tanggal Pemakaian</th>
                 <th scope="col">Status Konfirmasi</th>
                 <th scope="col">Status Pembayaran</th>
                 <th scope="col">Action</th>
@@ -42,7 +41,6 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $p->nama }}</td>
                 <td>{{ $p->nama_kegiatan }}</td>
-                <td>{{ $p->tanggal_pemakaian }}</td>
                 <td> 
                     @if ($p->status_konfirmasi == 'menunggu')
                         <span class="badge bg-warning">Menunggu</span>
@@ -102,10 +100,18 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <strong>Tanggal Pemakaian</strong>
+                                                    <strong>Tanggal Mulai</strong>
                                                 </div>
                                                 <div class="col-md-8">
-                                                    : {{ $p->tanggal_pemakaian }}
+                                                    : {{ $p->tanggal_mulai }}
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <strong>Tanggal Selesai</strong>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    : {{ $p->tanggal_selesai }}
                                                 </div>
                                             </div>
                                             <div class="row">

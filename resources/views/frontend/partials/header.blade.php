@@ -4,19 +4,34 @@
       <h1 class="logo a me-auto"><img src="{{asset('frontend/assets/img/logokemenag.png')}}" alt="" class="img-fluid">
         Reservasi Aula
       </h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="{{route('frontend.home')}}" class="active">Home</a></li>
-          <li><a href="#" >Tentang</a></li>
-          <li><a href="#" >Jadwal</a></li>
-          <li><a href="#" >Kontak</a></li>
+          <li><a href="{{route('frontend.home')}}">Home</a></li>
+          <li><a href="{{route('frontend.tentang')}}" >Tentang</a></li>
+          <li><a href="{{route('frontend.jadwal')}}" >Jadwal</a></li>
+          <li><a href="{{route('frontend.kontak')}}" >Kontak</a></li>
           @if(Auth::check() && Auth::user()->status_admin)
             <li><a href="{{ route('admin.dashboard') }}">Admin</a></li>
           @endif
-          <li><a href="{{route('login')}}" class="getstarted">Login</a></li>
+          @if(Auth::user())
+            <li class="dropdown">
+              <a class="getstarted" href="#">
+                <span>{{ auth()->user()->nama }}</span>
+                <i class="bi bi-chevron-down"></i>
+              </a>
+              <ul>
+                <li>
+                  <a href="{{route('logout')}}" class="active">
+                    Logout
+                    <i class="bi bi-box-arrow-in-right"></i>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          @else
+            <li><a href="{{route('login')}}" class="getstarted">Login</a></li>
+          @endif
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
